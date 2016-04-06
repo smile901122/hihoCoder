@@ -10,8 +10,9 @@ int backpack(int need[], int value[], const int N, const int M)
     for(int i = 0 ; i < N ; ++i)  
     {  
         for(int j = M ; j >= need[i] ; --j)  
-        {  
-            bp[j] = max(bp[j] , bp[j-need[i]] + value[i]);  
+        {
+            if(j >= need[i])
+                bp[j] = max(bp[j] , bp[j-need[i]] + value[i]);  
         }  
     }
     return bp[M];
