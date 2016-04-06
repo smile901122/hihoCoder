@@ -8,10 +8,9 @@ int backpack(int need[], int value[], const int N, const int M)
     memset(bp, 0, sizeof(bp));
     for(int i = 0 ; i < N ; ++i)  
     {  
-        for(int j = 1 ; j <= M; ++j)  
+        for(int j = need[i] ; j <= M; ++j)  
         {
-            if(j >= need[i])
-                bp[j] = max(bp[j] , bp[j-need[i]] + value[i]);  
+            bp[j] = max(bp[j] , bp[j-need[i]] + value[i]);  
         }  
     }
     return bp[M];
