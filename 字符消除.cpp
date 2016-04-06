@@ -18,51 +18,43 @@ string getString(const string &str)
         else    v.push_back(str[i]);  
     }  
     //最后一个元素  
-    if(str[len-2]!=str[len-1])  
-        v.push_back(str[len-1]); 
+    if(str[len - 2] != str[len - 1])  
+        v.push_back(str[len - 1]); 
         
-    return string(v.begin(),v.end());  
+    return string(v.begin(), v.end());  
 }  
 int main()  
 {  
     int n;  
     string s;  
-    cin>>n;
+    cin >> n;
     
-    string Insert="ABC";
+    string Insert = "ABC";
     while(n--)  
     {  
-        cin>>s;  
-        int max=s.size();  
-        //s=getString(s);  
-        int min=s.size();  
-        /* 
-        while(min>GetString(s).size()) 
-        { 
-            s=getString(s); 
-            min=s.size(); 
-        } 
-        */  
-        string test;  
-        for(int i=0;i<s.size();++i)  
+        cin >> s;  
+        int max = s.size();  
+        int min = s.size();  
+         
+        for(int i = 0; i < s.size(); ++i)  
         {  
-            for(int j=0;j<3;++j)  
+            for(int j = 0; j < 3; ++j)  
             {  
-                string str=s.substr(0,i+1)+Insert[j]+s.substr(i+1);  
-                int len=str.size();  
-                while(len>(str=getString(str)).size())  
+                string str = s.substr(0, i + 1) 
+                                + Insert[j] + s.substr(i + 1);  
+                int len = str.size();
+                str = getString(str);
+                while(len > str.size())  
                 {  
-                    len=str.size();  
-                    test=str;  
+                    len = str.size();
+                    str = getString(str);
                 }  
-                if(min>str.size())  
-                    min=str.size();  
+                if(min > str.size())  
+                    min = str.size();  
             }  
         }  
-          
-        cout<<max-min+1<<endl;  
-  
+        int result = max - min + 1;  
+        cout << result << endl;  
     }  
-          
-        return 0;  
+    return 0;  
 }  
